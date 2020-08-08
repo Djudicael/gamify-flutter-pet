@@ -84,6 +84,9 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           _topBarWidget(),
+          SizedBox(
+            height: _deviceWidth * 0.13,
+          ),
           _featureGameInfoWidget(),
         ],
       ),
@@ -140,17 +143,23 @@ class _HomePageState extends State<HomePage> {
             style:
                 TextStyle(color: Colors.white, fontSize: _deviceheigh * 0.040),
           ),
+          SizedBox(
+            height: _deviceWidth * 0.01,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
             children: featuredGames.map((_game) {
               double _circleRadius = _deviceheigh * 0.004;
+              bool _isActive =
+                  _game.title == featuredGames[_selectedGame].title;
               return Container(
+                margin: EdgeInsets.only(right: _deviceWidth * 0.015),
                 height: _circleRadius * 2,
                 width: _circleRadius * 2,
                 decoration: BoxDecoration(
-                  color: Colors.grey,
+                  color: _isActive ? Colors.green : Colors.grey,
                   borderRadius: BorderRadius.circular(100),
                 ),
               );
